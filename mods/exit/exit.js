@@ -64,7 +64,7 @@ exports.init = function init(node) {
   var server = app.listen(3125);
 
   var io = require('socket.io').listen(server);
+  io.set('destroy upgrade', false);
   var realtimeApi = new RealtimeAPI(io, node, pubkeysModule, txModule, blockModule);
 
-  io.set('destroy upgrade', false);
 };
